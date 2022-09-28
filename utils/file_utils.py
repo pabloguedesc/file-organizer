@@ -1,6 +1,9 @@
 import shutil
 import os
 
+# update here with your folder path
+path = "E:\\Users\\root\\Downloads"
+
 
 def extension_type(event):
     return event.src_path[event.src_path.rindex(".") + 1:]
@@ -67,7 +70,7 @@ def is_executable_file(event):
 
 
 def create_folder(foldername):
-    os.chdir("C:\\Users\\pablo\\Downloads")
+    os.chdir(path)
     if (os.path.exists(foldername) == True):
         print("Folder already exists!")
         return os.getcwd() + os.sep + str(foldername)

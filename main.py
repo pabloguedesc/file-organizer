@@ -4,6 +4,9 @@ from utils.file_utils import *
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+# importing 'path' from 'utils.file_utils'
+folder_locale = path
+
 
 class Handler(FileSystemEventHandler):
     @staticmethod
@@ -12,7 +15,7 @@ class Handler(FileSystemEventHandler):
 
     @staticmethod
     def on_modified(event):
-      # verificando existência do arquivo
+      # checking file existence
         if os.path.isdir(event.src_path):
             return
         if is_code_file(event) == True:
@@ -67,7 +70,7 @@ class Handler(FileSystemEventHandler):
 
 file_change_handler = Handler()
 observer = Observer()
-os.chdir("C:\\Users\\pablo\\Downloads")
+os.chdir(folder_locale)
 print(os.getcwd())
 observer.schedule(file_change_handler, os.getcwd(), recursive=False,)
 observer.start()
